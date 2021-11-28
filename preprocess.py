@@ -12,7 +12,7 @@ from geopy.extra.rate_limiter import RateLimiter
 start = time.time()
 
 # Abrimos el archivo excel y lo pasamos a un DataFrame.
-df = pd.read_excel("data.xlsx")
+df = pd.read_excel("data\data.xlsx")
 
 # Almacenamos las columnas numericas de nuestro DataFrame.
 numeric_columns = ['N_Habitaciones', 
@@ -24,8 +24,8 @@ numeric_columns = ['N_Habitaciones',
 
 # Para cada columna numerica, si posee algún valor que no sea
 # numerico, lo setiamos en nulls. 
-# for c in numeric_columns:
-#        df[c] = pd.to_numeric(df[c], errors='coerce')
+for c in numeric_columns:
+       df[c] = pd.to_numeric(df[c], errors='coerce')
 
 # Eliminamos todas las columnas que posean nulls.
 print(f"Shape: {df.shape}")
@@ -58,6 +58,11 @@ df = df[['Comuna',
 df = df.dropna()
 print(f"Shape 3: {df.shape}")
 
+#Filtramos los límites de la region metropolitana.
+df = df[(df['latitude'] <= -32) & (df['latitude'] >= -34)]
+df = df[(df['longitude'] <= -69) & (df['longitude'] >= -71)]
+
+print(f"Shape 4: {df.shape}")
 
 # Agrupamos por comuna.
 df = (df.groupby(by=["Comuna"])
@@ -85,7 +90,7 @@ df = (df.groupby(by=["Comuna"])
 result = df.rename(columns={"Tipo_Vivienda": "data"})
 
 # Pasamos a un json el DataFrame que obtuvimos.
-result.to_json("data2.json", orient='records', force_ascii=False, indent=2)
+result.to_json("data.json", orient='records', force_ascii=False, indent=2)
 
 end = time.time()
 print(f"Execution Time: {(end-start)/60} min.")

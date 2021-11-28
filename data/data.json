@@ -348,17 +348,6 @@
       },
       {
         "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":4.0,
-        "N_Baños":1.0,
-        "N_Estacionamientos":2.0,
-        "Total_Superficie_M2":220.0,
-        "Superficie_Construida_M2":85.0,
-        "Valor_UF":5902.3678911187,
-        "latitude":-38.7233107,
-        "longitude":-72.6313542
-      },
-      {
-        "Tipo_Vivienda":"Casa",
         "N_Habitaciones":3.0,
         "N_Baños":2.0,
         "N_Estacionamientos":4.0,
@@ -547,17 +536,6 @@
         "Valor_UF":7850.0,
         "latitude":-33.4085568,
         "longitude":-70.6557368
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":4.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":1.0,
-        "Total_Superficie_M2":234.95,
-        "Superficie_Construida_M2":126.0,
-        "Valor_UF":5207.9716686341,
-        "latitude":44.7918451,
-        "longitude":11.1413323
       },
       {
         "Tipo_Vivienda":"Casa",
@@ -785,17 +763,6 @@
       },
       {
         "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":6.0,
-        "N_Baños":1.0,
-        "N_Estacionamientos":3.0,
-        "Total_Superficie_M2":1250.0,
-        "Superficie_Construida_M2":200.0,
-        "Valor_UF":8159.1556141935,
-        "latitude":-41.2300133,
-        "longitude":-72.5821977
-      },
-      {
-        "Tipo_Vivienda":"Casa",
         "N_Habitaciones":4.0,
         "N_Baños":2.0,
         "N_Estacionamientos":1.0,
@@ -1006,17 +973,6 @@
         "Valor_UF":9700.0,
         "latitude":-33.240157,
         "longitude":-70.7817712
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":3.0,
-        "N_Baños":3.0,
-        "N_Estacionamientos":2.0,
-        "Total_Superficie_M2":200.0,
-        "Superficie_Construida_M2":88.0,
-        "Valor_UF":3124.7830011805,
-        "latitude":-15.3644309,
-        "longitude":-70.3666168
       },
       {
         "Tipo_Vivienda":"Casa",
@@ -1501,28 +1457,6 @@
       },
       {
         "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":3.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":2.0,
-        "Total_Superficie_M2":250.0,
-        "Superficie_Construida_M2":120.0,
-        "Valor_UF":4166.3773349073,
-        "latitude":-33.0194351,
-        "longitude":-58.5194717
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":2.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":2.0,
-        "Total_Superficie_M2":50.0,
-        "Superficie_Construida_M2":101.0,
-        "Valor_UF":2256.7877230748,
-        "latitude":18.3869884,
-        "longitude":-66.1027432
-      },
-      {
-        "Tipo_Vivienda":"Casa",
         "N_Habitaciones":4.0,
         "N_Baños":2.0,
         "N_Estacionamientos":2.0,
@@ -1542,17 +1476,6 @@
         "Valor_UF":2777.5848899382,
         "latitude":-33.5275631,
         "longitude":-70.7750287
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":4.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":1.0,
-        "Total_Superficie_M2":287.0,
-        "Superficie_Construida_M2":73.0,
-        "Valor_UF":5902.3678911187,
-        "latitude":-32.9796649,
-        "longitude":-60.6436597
       },
       {
         "Tipo_Vivienda":"Casa",
@@ -1579,28 +1502,6 @@
       {
         "Tipo_Vivienda":"Casa",
         "N_Habitaciones":5.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":1.0,
-        "Total_Superficie_M2":170.0,
-        "Superficie_Construida_M2":134.0,
-        "Valor_UF":2777.5848899382,
-        "latitude":-32.9807199,
-        "longitude":-60.6439215
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":3.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":2.0,
-        "Total_Superficie_M2":170.0,
-        "Superficie_Construida_M2":103.0,
-        "Valor_UF":2951.1839455593,
-        "latitude":22.1504541,
-        "longitude":-100.9134713
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":5.0,
         "N_Baños":4.0,
         "N_Estacionamientos":2.0,
         "Total_Superficie_M2":240.0,
@@ -1622,17 +1523,6 @@
       },
       {
         "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":4.0,
-        "N_Baños":3.0,
-        "N_Estacionamientos":3.0,
-        "Total_Superficie_M2":450.0,
-        "Superficie_Construida_M2":165.0,
-        "Valor_UF":4687.1745017707,
-        "latitude":-32.96594285,
-        "longitude":-68.7934707277
-      },
-      {
-        "Tipo_Vivienda":"Casa",
         "N_Habitaciones":3.0,
         "N_Baños":1.0,
         "N_Estacionamientos":2.0,
@@ -1647,17 +1537,6 @@
   {
     "Comuna":"Padre Hurtado",
     "data":[
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":4.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":3.0,
-        "Total_Superficie_M2":190.0,
-        "Superficie_Construida_M2":139.0,
-        "Valor_UF":3055.343378932,
-        "latitude":-36.8237799,
-        "longitude":-73.1319434
-      },
       {
         "Tipo_Vivienda":"Casa",
         "N_Habitaciones":4.0,
@@ -1685,17 +1564,6 @@
         "N_Habitaciones":3.0,
         "N_Baños":2.0,
         "N_Estacionamientos":1.0,
-        "Total_Superficie_M2":87.0,
-        "Superficie_Construida_M2":67.0,
-        "Valor_UF":1979.029234081,
-        "latitude":-36.8237799,
-        "longitude":-73.1319434
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":3.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":1.0,
         "Total_Superficie_M2":110.0,
         "Superficie_Construida_M2":85.0,
         "Valor_UF":3000.0,
@@ -1712,34 +1580,12 @@
         "Valor_UF":2916.4641344351,
         "latitude":-33.5650390613,
         "longitude":-70.7916123373
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":3.0,
-        "N_Baños":3.0,
-        "N_Estacionamientos":1.0,
-        "Total_Superficie_M2":280.0,
-        "Superficie_Construida_M2":95.0,
-        "Valor_UF":4900.0,
-        "latitude":-36.8237799,
-        "longitude":-73.1319434
       }
     ]
   },
   {
     "Comuna":"Pedro Aguirre Cerda",
     "data":[
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":3.0,
-        "N_Baños":3.0,
-        "N_Estacionamientos":4.0,
-        "Total_Superficie_M2":285.0,
-        "Superficie_Construida_M2":280.0,
-        "Valor_UF":9339.6291924172,
-        "latitude":-23.5767397,
-        "longitude":-70.3912023
-      },
       {
         "Tipo_Vivienda":"Casa",
         "N_Habitaciones":3.0,
@@ -1750,17 +1596,6 @@
         "Valor_UF":6242.6220401361,
         "latitude":-33.4801719,
         "longitude":-70.6704619
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":3.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":1.0,
-        "Total_Superficie_M2":400.0,
-        "Superficie_Construida_M2":150.0,
-        "Valor_UF":6943.9622248455,
-        "latitude":-53.1696908,
-        "longitude":-70.9536646
       },
       {
         "Tipo_Vivienda":"Casa",
@@ -1832,17 +1667,6 @@
         "Valor_UF":2951.1839455593,
         "latitude":-33.6014042,
         "longitude":-70.8741237
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":3.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":2.0,
-        "Total_Superficie_M2":170.0,
-        "Superficie_Construida_M2":60.0,
-        "Valor_UF":2430.3867786959,
-        "latitude":37.7073685,
-        "longitude":-5.3407988
       },
       {
         "Tipo_Vivienda":"Casa",
@@ -2000,8 +1824,8 @@
         "Total_Superficie_M2":320.0,
         "Superficie_Construida_M2":140.0,
         "Valor_UF":9500.0,
-        "latitude":-33.4635935,
-        "longitude":-70.5306275
+        "latitude":-33.460388,
+        "longitude":-70.5300364
       },
       {
         "Tipo_Vivienda":"Casa",
@@ -2427,17 +2251,6 @@
       },
       {
         "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":4.0,
-        "N_Baños":3.0,
-        "N_Estacionamientos":3.0,
-        "Total_Superficie_M2":250.0,
-        "Superficie_Construida_M2":96.0,
-        "Valor_UF":4998.6114968064,
-        "latitude":37.6659523,
-        "longitude":-1.6831288
-      },
-      {
-        "Tipo_Vivienda":"Casa",
         "N_Habitaciones":3.0,
         "N_Baños":3.0,
         "N_Estacionamientos":2.0,
@@ -2490,28 +2303,6 @@
         "Valor_UF":5137.4618161622,
         "latitude":-33.5970795,
         "longitude":-70.5948032
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":5.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":4.0,
-        "Total_Superficie_M2":250.0,
-        "Superficie_Construida_M2":416.0,
-        "Valor_UF":5311.0247153568,
-        "latitude":37.6659523,
-        "longitude":-1.6831288
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":3.0,
-        "N_Baños":2.0,
-        "N_Estacionamientos":3.0,
-        "Total_Superficie_M2":944.0,
-        "Superficie_Construida_M2":164.0,
-        "Valor_UF":6074.7014718134,
-        "latitude":37.6659523,
-        "longitude":-1.6831288
       },
       {
         "Tipo_Vivienda":"Casa",
@@ -3013,17 +2804,6 @@
       },
       {
         "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":3.0,
-        "N_Baños":3.0,
-        "N_Estacionamientos":2.0,
-        "Total_Superficie_M2":250.0,
-        "Superficie_Construida_M2":112.0,
-        "Valor_UF":4950.0,
-        "latitude":3.8767223,
-        "longitude":-74.1152865
-      },
-      {
-        "Tipo_Vivienda":"Casa",
         "N_Habitaciones":4.0,
         "N_Baños":3.0,
         "N_Estacionamientos":1.0,
@@ -3133,17 +2913,6 @@
       },
       {
         "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":7.0,
-        "N_Baños":3.0,
-        "N_Estacionamientos":8.0,
-        "Total_Superficie_M2":700.0,
-        "Superficie_Construida_M2":500.0,
-        "Valor_UF":21162.0,
-        "latitude":13.4803899,
-        "longitude":-88.17722
-      },
-      {
-        "Tipo_Vivienda":"Casa",
         "N_Habitaciones":5.0,
         "N_Baños":4.0,
         "N_Estacionamientos":2.0,
@@ -3209,17 +2978,6 @@
     "data":[
       {
         "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":4.0,
-        "N_Baños":4.0,
-        "N_Estacionamientos":2.0,
-        "Total_Superficie_M2":345.0,
-        "Superficie_Construida_M2":120.0,
-        "Valor_UF":6350.0,
-        "latitude":-41.4018994,
-        "longitude":-72.9091054
-      },
-      {
-        "Tipo_Vivienda":"Casa",
         "N_Habitaciones":14.0,
         "N_Baños":10.0,
         "N_Estacionamientos":1.0,
@@ -3272,17 +3030,6 @@
         "Valor_UF":13900.0,
         "latitude":-33.440652,
         "longitude":-70.5340639
-      },
-      {
-        "Tipo_Vivienda":"Casa",
-        "N_Habitaciones":3.0,
-        "N_Baños":1.0,
-        "N_Estacionamientos":4.0,
-        "Total_Superficie_M2":425.0,
-        "Superficie_Construida_M2":140.0,
-        "Valor_UF":13887.924449691,
-        "latitude":-12.6942023,
-        "longitude":-38.3216603
       },
       {
         "Tipo_Vivienda":"Casa",

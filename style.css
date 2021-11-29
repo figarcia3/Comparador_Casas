@@ -2,20 +2,50 @@ body{
     width: 95%;
     height: 50%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
-
 
 svg#santiago-svg{
     border-radius: 1%;
     border-color: rgb(51, 51, 51);
     border-style: solid;
+    background: solid;
     background-color: whitesmoke;
 }
 
-path.santiago{
-    stroke-width: .8;
-    stroke: blue;
-    fill: blue;
-    opacity: 0.2;
+
+.container-column{
+    padding: 10px;
+}
+
+.container-row{
+    padding: 10px;
+    border-radius: 1%;
+    border-color: rgb(51, 51, 51);
+    border-style: solid;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+text{
+    width: 600;
+    height: 40;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+#range-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+input{
+    width: 450px;
 }

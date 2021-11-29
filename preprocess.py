@@ -29,7 +29,7 @@ for c in numeric_columns:
 
 # Eliminamos todas las columnas que posean nulls.
 print(f"Shape: {df.shape}")
-df = df.dropna()
+df = df.fillna(0)
 print(f"Shape 2: {df.shape}")
 
 # # Seleccionamos las comunas que nos servirán para la visualización.
@@ -53,7 +53,8 @@ df = df[['Comuna',
         'Superficie_Construida_M2',
         'Valor_UF',
         'latitude', 
-        'longitude']]
+        'longitude',
+        'Dirección']]
 
 df = df.dropna()
 print(f"Shape 3: {df.shape}")
@@ -74,7 +75,8 @@ df = (df.groupby(by=["Comuna"])
                                 'Superficie_Construida_M2',
                                 'Valor_UF',
                                 'latitude', 
-                                'longitude']].to_dict("records"))
+                                'longitude',
+                                'Dirección']].to_dict("records"))
             .reset_index()
             .rename(columns={0:'Tipo_Vivienda', 
                             1:'N_Habitaciones',
@@ -84,13 +86,14 @@ df = (df.groupby(by=["Comuna"])
                             5:'Superficie_Construida_M2',
                             6:'Valor_UF',
                             7:'latitude',
-                            8:'longitude'}))
+                            8:'longitude',
+                            9:'Dirección'}))
 
 # Renombramos la columna de Tipo_Vivienda a data.
 result = df.rename(columns={"Tipo_Vivienda": "data"})
 
 # Pasamos a un json el DataFrame que obtuvimos.
-result.to_json("data.json", orient='records', force_ascii=False, indent=2)
+result.to_json("data/data2.json", orient='records', force_ascii=False, indent=2)
 
 end = time.time()
 print(f"Execution Time: {(end-start)/60} min.")

@@ -54,7 +54,8 @@ df = df[['Comuna',
         'Valor_UF',
         'latitude', 
         'longitude',
-        'Dirección']]
+        'Dirección',
+        'Link']]
 
 df = df.dropna()
 print(f"Shape 3: {df.shape}")
@@ -76,7 +77,8 @@ df = (df.groupby(by=["Comuna"])
                                 'Valor_UF',
                                 'latitude', 
                                 'longitude',
-                                'Dirección']].to_dict("records"))
+                                'Dirección',
+                                'Link']].to_dict("records"))
             .reset_index()
             .rename(columns={0:'Tipo_Vivienda', 
                             1:'N_Habitaciones',
@@ -87,13 +89,14 @@ df = (df.groupby(by=["Comuna"])
                             6:'Valor_UF',
                             7:'latitude',
                             8:'longitude',
-                            9:'Dirección'}))
+                            9:'Dirección',
+                            10:'Link'}))
 
 # Renombramos la columna de Tipo_Vivienda a data.
 result = df.rename(columns={"Tipo_Vivienda": "data"})
 
 # Pasamos a un json el DataFrame que obtuvimos.
-result.to_json("data/data2.json", orient='records', force_ascii=False, indent=2)
+result.to_json("data/data.json", orient='records', force_ascii=False, indent=2)
 
 end = time.time()
 print(f"Execution Time: {(end-start)/60} min.")

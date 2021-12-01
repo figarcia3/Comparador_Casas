@@ -4,6 +4,8 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #dfdfdf;
+    font-family: Raleway, Verdana, sans-serif;
 }
 
 svg#santiago-svg{
@@ -14,19 +16,27 @@ svg#santiago-svg{
     background-color: whitesmoke;
 }
 
+#selectores{
+    display: flex;
+    flex-direction: row;
+}
 
 .container-column{
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .container-row{
-    padding: 10px;
-    border-radius: 1%;
-    border-color: rgb(51, 51, 51);
-    border-style: solid;
     display: flex;
     flex-direction: row;
     align-items: center;
+    border-radius: 1%;
+    border-color: rgb(51, 51, 51);
+    border-style: solid;
+    background: solid;
+    background-color: whitesmoke;
 }
 
 text{

@@ -7,15 +7,32 @@
     <script src='https://d3js.org/d3.v7.min.js'></script>
     <script src="https://d3js.org/d3-geo-projection.v4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.0.2/luxon.min.js" integrity="sha512-frUCURIeB0OKMPgmDEwT3rC4NH2a4gn06N3Iw6T1z0WfrQZd7gNfJFbHrNsZP38PVXOp6nUiFtBqVvmCj+ARhw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>Casas Usadas</title>
+    <title>Comparador de Propiedades</title>
 <link rel='stylesheet' href='style.css'>
 </head>
 <body>
-    <h1>Comparador Propiedades</h1>
+    <h1>Comparador de Propiedades</h1>
+
+    <div class="text">
+        Este comparador de propiedades de la región Metropolitana fue realizado por <a href="https://github.com/figarcia3">Figarcia3</a>.
+        En esta visualización podrás encontrar diversas propiedades habitacionales en forma de círculos sobre
+        el mapa, filtrar por el rango de precios utilizando el selector, 
+        seleccionar la propiedad mediante un click sobre ella e ir 
+        a la publicación con un doble
+        click sobre la propiedad.
+        <br>
+        <br>
+        El data set fue extraído mediante web scrapping de la página <a href="https://chilepropiedades.cl/">Chile Propiedades</a>
+        en el 2020, por lo que muchas publicaciones puede que ya no estén disponibles.
+        <a href=https://www.kaggle.com/gorkigonzalez/casas-usadas-rm-chile-mayo-2020>Referencias del data set</a>.
+        <br>
+        <br>
+
+    </div>
         <div class="container-column">
             <div id='text-range-container'></div>
             <div id='range-container'>
-                <input type="range" name="valor" id="valor-range" min="1215" max="65000" step="1">
+                <input type="range" name="valor" id="valor-range" min="0" max="65000" step="1">
             </div>
             <div id='santiago-container'>
                 <svg id='santiago-svg'></svg>

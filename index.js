@@ -657,7 +657,7 @@ const slider_svg = d3.select('#range-container')
 
 const slider_axis = slider_svg
                         .append('g')
-                        .attr('transform',`translate(${0}, ${0})`)
+                        .attr('transform',`translate(${25}, ${0})`)
 
 const escalaX = d3.scaleLinear()
 
@@ -753,6 +753,13 @@ const show_casas = (data_casas, val) => {
                         .attr("cy", d => proyeccion([d.longitude, d.latitude])[1])
                         .attr("r", 8/CURRENT_ZOOM)
                         .attr("opacity", 0)
+                        .on("dblclick", function(_, d){
+                            // https://stackoverflow.com/questions/25461578/d3js-how-to-open-new-tab-after-doubleclick-on-element
+                            window.open(
+                                d.Link,
+                                '_blank' // <- This is what makes it open in a new window.
+                              );
+                        })
                         .on("click", function(_, d){
                             if(!(DATA_COMPARE.includes(d))){
                                 if (DATA_COMPARE.length==2){
@@ -798,10 +805,13 @@ const show_casas = (data_casas, val) => {
             },
             (update) => {
                 update
+                    .attr("cx", d => proyeccion([d.longitude, d.latitude])[0])
+                    .attr("cy", d => proyeccion([d.longitude, d.latitude])[1])
                     .attr("id", function(d){
                         const id_str = `c${d.index}`
                         return id_str
                     })
+
             },
             (exit) => {
                 exit
@@ -844,7 +854,7 @@ d3.json("data/data.json")
             show_casas(DATA_CASAS_PLANOS, slider.value);
         
             d3.select('#text-range')
-                .text(`[ ${MIN_VALOR} UF , ${slider.value} UF ]`)
+                .text(`[0UF, ${slider.value}UF]`)
         
         };
 
@@ -858,8 +868,8 @@ d3.json("data/data.json")
         const max_valor_e = d3.max(DATA_CASAS_PLANOS.map((d) => parseInt(d.N_Estacionamientos)));
         
         escalaX
-            .domain([MIN_VALOR, MAX_VALOR])
-            .range([0, 450]);
+            .domain([0, MAX_VALOR])
+            .range([0, 400]);
         
         escalaX_comp_uf 
             .domain([0, MAX_VALOR])
@@ -896,7 +906,7 @@ d3.json("data/data.json")
             .transition()
             .duration(1000)
             .call(d3.axisBottom(escalaX)
-                    .ticks(5)
+                    .ticks(4)
                     .tickFormat(x => `${x}UF`));
 
     })

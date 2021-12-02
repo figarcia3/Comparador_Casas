@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <script src='https://d3js.org/d3.v7.min.js'></script>
+    <script src="https://d3js.org/d3-geo-projection.v4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/luxon/2.0.2/luxon.min.js" integrity="sha512-frUCURIeB0OKMPgmDEwT3rC4NH2a4gn06N3Iw6T1z0WfrQZd7gNfJFbHrNsZP38PVXOp6nUiFtBqVvmCj+ARhw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <title>Comparador de Propiedades</title>
+<link rel='stylesheet' href='style-informe.css'>
+</head>
+<body>
+    <h1>Informe</h1>
+    <p>Examen | IIC2026 - Visualización de Información</p>
+
+    <h2>1. Primer Nivel: Caracterización del Dominio.</h2>
+    <h3>1.1. Contexto de los datos</h3>
+
+    Los data set utilizados son <a href="data/data.xlsx" style="font-style: italic">data/data.xlsx</a>
+    y <a href="data/santiago.json" style="font-style: italic">data/santiago.json</a>. El primero contiene
+    datos de casas usadas en la region metropolitana y fue preprocesado de tal manera de que su manipulación
+    en la visualización fuera más cómoda. El resultado de este preprocesamiento se encuentra en
+    <a href="data/data.json" style="font-style: italic">data/data.json</a>
+    . El segundo posee un formato <a style="font-style: italic;">geojson</a>
+    de la region metropolitana con los datos geográficos de cada comuna.
+    <br>
+    <br>
+    El data set de las propiedades, contiene diferentes características de estas, las cuales son decisivas
+    para la elección de compra. Ejemplo de estas son su ubicación, metros cuadrados construídos, 
+    número de baños, de habitaciones, de estacionamientos, etc.
+    Esta información fue recolectada mediante <a style="font-style: italic;">web-scrapping</a>
+    de la página web <a href="https://chilepropiedades.cl/">chilepropiedades.cl</a> a través de las diferentes
+    casas publicadas en el sitio.
+    Este procedimiento de obtención
+    de datos fue realizado en mayo de 2020, por lo que pueden existir publicaciones ya eliminadas.
+    <br>
+    <br>
+    Como referencia del data set de propiedades, ingresar al siguiente
+    <a href='https://www.kaggle.com/gorkigonzalez/casas-usadas-rm-chile-mayo-2020'>link</a>. Por otro lado, el data set
+    con los datos geográficos fue obtenido desde <a href='https://github.com/jlhonora/geo'>este</a> repositorio de github.
+
+    <h3>1.2. Usuario objetivo</h3>
+
+    
+    Esta visualización está principalmente dirigida a las personas que busquen comprar una
+    propiedad en la región Metropolitana, permitiendo comparar entre las diferentes opciones. 
+    <br>
+    <br>
+    La visualización está pensada para facilitar la elección de compra, la cual puede tornarse muy complicada
+    ya que existen muchos aspectos a considerar. Mediante la interfaz interactiva, se pretende que el usuario 
+    navegue por las diferentes opciones de compra y tome la mejor decisión.
+
+    <h2>2. Segundo Nivel: Abstracción de datos y tareas</h2>
+    <h3>2.1. Abstracción de tareas</h3>
+    <ul>
+        <li>
+            <a style="font-style: italic;">Descubrir elementos.</a> Descubrir 
+            que propiedades se ajustan a un cierto rango de precios.
+        </li>
+        <li>
+            <a style="font-style: italic;">Explorar las diferentes ubicaciones y datos.</a>
+            Explorar las diferentes propiedades encontrando en que comuna de la region Metropolitana
+            están ubicadas.
+        </li>
+        <li>
+            <a style="font-style: italic;">Comparar elementos.</a> Comparar dos propiedades mediante
+            sus diferentes características.
+        </li>
+    </ul>
+    <h3>2.2. Abstracción de datos</h3>
+
+    Con respecto del nivel de conjuntos de datos, consideramos dos data set. En primer lugar 
+    encontramos el data set de las propiedades que se clasifica como <b>tabular</b>. En segundo lugar
+    tenemos el data set de las coordenadas de la región Metropolitana, por lo que podemos
+    clasificarlo como <b>geométrico</b>.
+    <br>
+    <br>
+    Con respecto al nivel de datos singulares, podemos encontrar tres:
+    <ul>
+        <li><b>Propiedades:</b> Este define como un dato singular de tipo <b>Ítem</b>. Se consideran todas
+            las filas del conjunto de datos.
+        </li>
+        <li><b>Coordenadas Comuna:</b> Este dato singular lo podemos definir como <b>Pocisión</b>. Ya que muestra
+            las diferentes coordenadas de las comunas en la región Metropolitana. Este dato lo podemos encontrar en
+            <a href="data/santiago.json" style="font-style: italic">data/santiago.json</a>.
+        </li>
+        <li><b>Características:</b> Se consideran todos las características
+            para cada una de las propiedades, por lo que se puede definir como <b>Atributo</b>.
+        </li>
+    </ul>
+    
+    De esta manera, se detallarán las características de cada uno de los <b>datos singulares</b> de tipo <b>atributo</b>,
+    donde cada uno de estos le dan características al ítem <b>Propiedades</b>. Los atributos son los siguientes:
+
+    <ul>
+        <li>
+            <b>Comuna</b>: Este atributo señala en que comuna está ubicada la propiedad.
+            <ul>
+                <li><b>Categórico</b>: No poseen orden intrínseco.
+                </li>
+                <li><b>Valor/Llave</b>: En este caso, en el data set original, comuna es simplemente un valor.
+                    Pero luego de preprocesar el data set, se agrupan todas las propiedades correspientes a una comuna,
+                    por lo que pasa a comportarse como llave.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>N_Habitaciones</b>: Este atributo detalla la cantidad de habitaciones que posee
+            la propiedad.
+            <ul>
+                <li><b>Ordenado</b>: Poseen orden intrínseco.
+                    <ul>
+                        <li><b>Cuantitativo</b>: Existe comparación aritmética exacta entre ellos los valores.
+                        </li>
+                        <li><b>Secuencial</b>: Podemos encontrarlos entre un valor mínimo y máximo.
+                        </li>
+                        <li><b>No cíclico</b>: El valor de este atributo puede aumentar pero no vuelve a su valor mínimo.
+                        </li>
+                    </ul>
+                </li>
+                <li><b>Valor</b>: No identifica un elemento particular del data set.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>N_Baños</b>: Este atributo detalla la cantidad de baños que posee
+            la propiedad.
+            <ul>
+                <li><b>Ordenado</b>: Poseen orden intrínseco.
+                    <ul>
+                        <li><b>Cuantitativo</b>: Existe comparación aritmética exacta entre ellos los valores.
+                        </li>
+                        <li><b>Secuencial</b>: Podemos encontrarlos entre un valor mínimo y máximo.
+                        </li>
+                        <li><b>No cíclico</b>: El valor de este atributo puede aumentar pero no vuelve a su valor mínimo.
+                        </li>
+                    </ul>
+                </li>
+                <li><b>Valor</b>: No identifica un elemento particular del data set.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>N_Estacionamientos</b>: Este atributo detalla la cantidad de estacionamientos que posee
+            la propiedad.
+            <ul>
+                <li><b>Ordenado</b>: Poseen orden intrínseco.
+                    <ul>
+                        <li><b>Cuantitativo</b>: Existe comparación aritmética exacta entre ellos los valores.
+                        </li>
+                        <li><b>Secuencial</b>: Podemos encontrarlos entre un valor mínimo y máximo.
+                        </li>
+                        <li><b>No cíclico</b>: El valor de este atributo puede aumentar pero no vuelve a su valor mínimo.
+                        </li>
+                    </ul>
+                </li>
+                <li><b>Valor</b>: No identifica un elemento particular del data set.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Total_Superficie_M2</b>: Este atributo detalla la cantidad de metros cuadrados totales que posee
+            la propiedad.
+            <ul>
+                <li><b>Ordenado</b>: Poseen orden intrínseco.
+                    <ul>
+                        <li><b>Cuantitativo</b>: Existe comparación aritmética exacta entre ellos los valores.
+                        </li>
+                        <li><b>Secuencial</b>: Podemos encontrarlos entre un valor mínimo y máximo.
+                        </li>
+                        <li><b>No cíclico</b>: El valor de este atributo puede aumentar pero no vuelve a su valor mínimo.
+                        </li>
+                    </ul>
+                </li>
+                <li><b>Valor</b>: No identifica un elemento particular del data set.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Total_Superficie_M2</b>: Este atributo detalla la cantidad de metros cuadrados construídos que posee
+            la propiedad.
+            <ul>
+                <li><b>Ordenado</b>: Poseen orden intrínseco.
+                    <ul>
+                        <li><b>Cuantitativo</b>: Existe comparación aritmética exacta entre ellos los valores.
+                        </li>
+                        <li><b>Secuencial</b>: Podemos encontrarlos entre un valor mínimo y máximo.
+                        </li>
+                        <li><b>No cíclico</b>: El valor de este atributo puede aumentar pero no vuelve a su valor mínimo.
+                        </li>
+                    </ul>
+                </li>
+                <li><b>Valor</b>: No identifica un elemento particular del data set.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Valor_UF</b>: Este atributo detalla la cantidad de uf que cuesta
+            la propiedad.
+            <ul>
+                <li><b>Ordenado</b>: Poseen orden intrínseco.
+                    <ul>
+                        <li><b>Cuantitativo</b>: Existe comparación aritmética exacta entre ellos los valores.
+                        </li>
+                        <li><b>Secuencial</b>: Podemos encontrarlos entre un valor mínimo y máximo.
+                        </li>
+                        <li><b>No cíclico</b>: El valor de este atributo puede aumentar pero no vuelve a su valor mínimo.
+                        </li>
+                    </ul>
+                </li>
+                <li><b>Valor</b>: No identifica un elemento particular del data set.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Index</b>: Este atributo señala el índice de la propiedad. Es agregado luego del preprocesamiento 
+            en este <a href="index.js">archivo</a>.
+            <ul>
+                <li><b>Ordenado</b>: Poseen orden intrínseco.
+                    <ul>
+                        <li><b>Ordinal</b>: No existe comparación aritmética exacta entre ellos los valores.
+                        </li>
+                        <li><b>Secuencial</b>: Podemos encontrarlos entre un valor mínimo y máximo.
+                        </li>
+                        <li><b>No cíclico</b>: El valor de este atributo puede aumentar pero no vuelve a su valor mínimo.
+                        </li>
+                    </ul>
+                </li>
+                <li><b>Llave</b>: Se puede identificar un ítem solo con este valor.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <b>Link</b>: Este atributo señala el link de la propiedad en <a href="https://chilepropiedades.cl/">chilepropiedades.cl</a>.
+            <ul>
+                <li><b>Categórico</b>: No poseen orden intrínseco.
+                </li>
+                <li><b>Llave</b>: Se puede identificar un ítem solo con este valor.
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    Dentro del apartado de <b>datos derivados</b>, encontramos dos atributos. Estos fueron extraídos mediante el atributo
+    de <b>Dirección</b> que encontramos en el data set original. Mediante el preprocesamiento, se convirtió la dirección
+    de la propiedad en sus coordenadas. Sin embargo, como nos entregan información espacial bidimensional, podemos
+    clasificar <b>Longitud</b> y <b>Latitud</b> como un <b>dato singular</b> de tipo <b>Posición</b>.
+
+    <h2>3. Tercer Nivel: Codificación visual y de interacción</h2>
+
+    <h3>3.1. Tarea 1: Descubrir elementos</h3>
+
+    <ul>
+        <li><b>Selector del rango</b> (Idiom de interacción):
+        </li>
+
+        Para cumplir con la tarea de descubrir elementos, se fijó este idiom interactivo con el fin de poder
+        filtrar propiedades según su precio máximo. De esta manera, al arrastrar el selector del rango,
+        el usuario podrá ir viendo como aparecen y desaparecen las diferentes propiedades según el valor y, de esta
+        manera, ir descubriendo los elementos de la visualización.
+
+        <li><b>Transición de aparición o desaparición de puntos</b> (Idiom de interacción):
+        </li>
+
+        Se estableción esta interacción con el fin de resaltar el cambio de datos existentes en el mapa. 
+        La transición trabaja con el canal de la opacidad.
+
+        <li><b>Eje del rango</b> (Marca):
+        </li>
+
+        Para determinar la extensión del rango con el que se está filtrando las propiedades, se creó esta marca
+        unidimensional para mostrar los límites de la filtración. Además se especifican cuatro valores que
+        indican un estimado de donde se encuentra el cursor.
+
+
+    </ul>
+
+    <h3>3.2. Tarea 2: Explorar las diferentes ubicaciones y datos</h3>
+
+    <ul>
+        <li><b>Mapa región Metropolitana</b> (Idiom visual)
+        </li>
+
+        El mapa fue contruido de tal manera de que se distinguiera cada una de las comunas de la región, sirviendo
+        para ubicar cada propiedad dentro de una cierta comuna.
+
+
+        <li><b>Zoom</b> (Idiom de interacción):
+        </li>
+        
+        El zoom se estableció principalmente para facilitar la tarea de exploración. De esta manera se puede
+        ubicar con mayor detalle las propiedades en su comuna correspondiente.
+
+        <li><b>ToolTip Comunas</b> (Decisión de diseño):
+        </li>
+
+        Se establece solamente cuando el cursor se encuentra sobre una comuna, esto permite 
+        definir exactamente los límites de cada una de una manera interactiva.
+
+        <li><b>ToolTip propiedades</b> (Decisión de diseño):
+        </li>
+
+        Se establece solamente cuando el cursor se encuentra sobre una propiedad, esto permite 
+        saber el índice de la propiedad en la que se encuentra.
+
+        <li><b>Formas Comunas</b> (Marca):
+        </li>
+        
+        Se estableció la forma de las comunas como una marca bidimensional, con el fin de representar fielmente
+        la distribución espacial de la ciudad y poder ubicar cada comuna.
+
+        <li><b>Círculos</b> (Marca):
+        </li>
+        
+        Se establece el círculo como marca adimensional para cada propiedad. Se escogió arbitrariamente la figura
+        para la representación de los ítem ya que cualquier figura que destaque dentro del mapa serviría para
+        la exploración.
+
+        <li><b>Posición círculos</b> (Canal):
+        </li>
+        
+        La posición de los círculos es el canal más importante para determinar la ubicación de cada una de las
+        propiedades.
+
+        <li><b>Opacidad comunas</b> (Canal):
+        </li>
+
+        La opacidad de las comunas indica en que comuna se encuentra el cursor. Esto se realiza con el fin de 
+        resaltar la comuna.
+
+    </ul>
+
+    <ul>
+
+
+    </ul>
+
+    <h3>3.3. Tarea 3: Comparar elementos</h3>
+
+    <ul>
+        <li><b>Selección</b> (Idiom de interacción):
+        </li>
+        
+        La selección se establece para poder comparar los de las propiedades en cuestión. Este idiom tendrá cambios
+        sobre los gráficos. Esta ocurre mediante un click.
+
+        <li><b>Gráficos de Atributo</b> (Idiom visual):
+        </li>
+
+        Son los gráficos de barras que permiten comparar entre las propiedades seleccionadas.
+
+        <li><b>Largo rectángulos en los gráficos</b> (Canal):
+        </li>
+
+        El largo del rectángulo permite ver visualmente el valor del atributo en cuestión.
+        Con el fin de comparar visualmente.
+        
+        <li><b>Color en barras y círculos</b> (Canal):
+        </li>
+
+        El color permite identificar que propiedades se encuentran seleccionadas para la comparación.
+
+        <li><b>Eje vertical del gráfico de atributos</b> (Marca):
+        </li>
+
+        Permite determinar el índice de la barra.
+
+        <li><b>Eje horizontal del gráfico de atributos</b> (Marca):
+        </li>
+
+        Permite determinar la extensión de la barra.
+
+
+        <li><b>ToolTip barras</b> (Decisión de diseño):
+        </li>
+
+        Se establece solamente cuando el cursor se encuentra sobre una barra en el gráfico, esto permite 
+        saber exactamente el valor del atributo.
+
+    </ul>
+
+</body>
+</html>
